@@ -4,7 +4,8 @@
     "web/*"
   ],
   "scripts": {
-    "start": "platformatic start",
+    "start": "wattpm start",
+    "dev": "wattpm dev",
     "build": "wattpm build"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ $_parent_host = $_SERVER['HTTP_X_FORWARDED_HOST'];
 
 define('WP_HOME', $_parent_protocol . '://' . $_parent_host . '/wp');
 define('WP_SITEURL', $_parent_protocol . '://' . $_parent_host . '/wp');
+$_SERVER['HTTP_HOST'] = $_parent_protocol . '://' . $_parent_host;
 
 /**
  * The base configuration for WordPress
