@@ -1,0 +1,13 @@
+{
+  "name": "wp",
+  "scripts": {
+    "start": "platformatic start",
+    "test": "echo \"No tests defined\"."
+  },
+  "dependencies": {
+    "@platformatic/php": "^0.4.0"
+  },
+  "engines": {
+    "node": ">= 22.14.0"
+  }
+}
