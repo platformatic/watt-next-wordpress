@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: Apache-2.0 */
 // app/blog/page.js
 import Link from 'next/link';
 import Image from 'next/image';
