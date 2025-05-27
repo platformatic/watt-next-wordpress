@@ -12,8 +12,21 @@ This project consists of three main services:
 
 ## Prerequisites
 
-- Node.js >= 18.8.0 (or >= 20.6.0)
-- PHP (for WordPress backend)
+- Node.js >= 22.14.0
+- All PHP binary dependencies installed as listed in https://github.com/platformatic/php-node
+- MySQL run via Docker (`docker compose up` in this directory)
+
+This `.env` file is required for the project to run:
+
+```
+PLT_SERVER_HOSTNAME=127.0.0.1
+PORT=3000
+PLT_SERVER_LOGGER_LEVEL=info
+PLT_MANAGEMENT_API=true
+PLT_COMPOSER_TYPESCRIPT=false
+PLT_COMPOSER_EXAMPLE_ORIGIN=http://127.0.0.1:3043
+PLT_WP_TYPESCRIPT=false
+```
 
 ## Installation
 
