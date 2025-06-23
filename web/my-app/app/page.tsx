@@ -30,6 +30,7 @@ async function getPosts() {
     );
     
     if (!response.ok) {
+      console.error("Invalid response from WP:", await response.text());
       throw new Error(`Failed to fetch posts: ${response.status}`);
     }
     
