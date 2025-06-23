@@ -1,20 +1,33 @@
 /* SPDX-License-Identifier: Apache-2.0 */
 // app/blog/page.js
+import { headers } from 'next/headers';
 import Link from 'next/link';
 import Image from 'next/image';
-import undici from 'undici';
 
 // Replace with your WordPress site URL
 const WORDPRESS_URL = 'http://wp.plt.local';
 
 // Server component to fetch posts
 async function getPosts() {
+  const headersList = await headers();
+  const xForwardedFor = headersList.get("x-forwarded-for");
+  const xForwardedHost = headersList.get("x-forwarded-host");
+  const xForwardedProto = headersList.get("x-forwarded-proto");
+
   try {
-    const response = await fetch(`${WORDPRESS_URL}/index.php?rest_route=/wp/v2/posts&per_page=100`, {
-    //const response = await fetch(`${WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&per_page=12`, {
-      cache: 'no-store',
-      //next: { revalidate: 300 }, // Revalidate every 5 minutes
-    });
+    const response = await fetch(
+      `${WORDPRESS_URL}/index.php?rest_route=/wp/v2/posts&per_page=100`,
+      {
+        //const response = await fetch(`${WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&per_page=12`, {
+        cache: "no-store",
+        headers: {
+          "x-forwarded-for": xForwardedFor,
+          "x-forwarded-host": xForwardedHost,
+          "x-forwarded-proto": xForwardedProto,
+        },
+        //next: { revalidate: 300 }, // Revalidate every 5 minutes
+      }
+    );
     
     if (!response.ok) {
       throw new Error(`Failed to fetch posts: ${response.status}`);
