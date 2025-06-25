@@ -1,11 +1,7 @@
 <?php
 
-// If behind a reverse proxy that sets custom headers
-// $_parent_protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? (isset($_SERVER['HTTPS']) ? 'https' : 'http');
-// $_parent_host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'];
-
-$_parent_protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'];
-$_parent_host = $_SERVER['HTTP_X_FORWARDED_HOST'];
+$_parent_protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? $_SERVER['REQUEST_SCHEME'] ?? (isset($_SERVER['HTTPS']) ? 'https' : 'http');
+$_parent_host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'];
 
 define('WP_HOME', $_parent_protocol . '://' . $_parent_host . '/wp');
 define('WP_SITEURL', $_parent_protocol . '://' . $_parent_host . '/wp');
