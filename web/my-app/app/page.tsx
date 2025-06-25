@@ -9,22 +9,12 @@ const WORDPRESS_URL = 'http://wp.plt.local';
 
 // Server component to fetch posts
 async function getPosts() {
-  const headersList = await headers();
-  const xForwardedFor = headersList.get("x-forwarded-for");
-  const xForwardedHost = headersList.get("x-forwarded-host");
-  const xForwardedProto = headersList.get("x-forwarded-proto");
-
   try {
     const response = await fetch(
       `${WORDPRESS_URL}/index.php?rest_route=/wp/v2/posts&per_page=100`,
       {
         //const response = await fetch(`${WORDPRESS_URL}/wp-json/wp/v2/posts?_embed&per_page=12`, {
         cache: "no-store",
-        headers: {
-          "x-forwarded-for": xForwardedFor,
-          "x-forwarded-host": xForwardedHost,
-          "x-forwarded-proto": xForwardedProto,
-        },
         //next: { revalidate: 300 }, // Revalidate every 5 minutes
       }
     );
