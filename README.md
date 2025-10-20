@@ -54,7 +54,7 @@ Referenced from: <B4F93CE8-65CC-30C7-BEB2-43FF17C67FB5> watt-next-wordpress/node
 Reason: tried: '/opt/homebrew/opt/libzip/lib/libzip.5.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libzip/lib/libzip.5.dylib' (no such file), '/opt/homebrew/opt/libzip/lib/libzip.5.dylib' (no such file)
 ```
 
-be sure that such libraries are installed on your maching. For instance, on a Macbook, you can install it with `brew install libzip`.
+be sure that such libraries are installed on your maching. For instance, on a Macbook, you can install it with `brew install libzip`. For Debian/Ubuntu-based systems: `sudo apt-get install libzip4`
 
 ## Production
 
